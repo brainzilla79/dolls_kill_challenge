@@ -20,17 +20,22 @@
   </div>
 
   <div class="container">
-    <form class="product-form" onsubmit="handleSubmit()">
+    <form class="product-form">
       <div class="form-group">
         <input type="text" class="form-control" id="productIDs" placeholder="Product ID/IDs"/>
       </div>
-      <button type="submit" class="btn btn-success">Submit</button>
+      <button type="submit" id="submitButton" class="btn btn-success">Submit</button>
     </form>
   </div>
   <script>
-    function handleSubmit(e) {
+    document.getElementById("submitButton").addEventListener('click', function(e){
       e.preventDefault();
-    }
+      const productIDs = document.getElementById("productIDs").value;
+      $.ajax({
+        method: "GET", 
+        url: `https://www.dollskill.com/codetest/api.php?ids=${productIDs}&op=get_size_attributes`
+      }).then(products => console.log(products));
+    });
   </script>
 </body>
 </html>
