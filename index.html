@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,8 +9,10 @@
     crossorigin="anonymous">
   <link rel="stylesheet" href="./styles.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="./index.js"></script>
   <title>Document</title>
 </head>
+
 <body>
   <div class="jumbotron">
     <div class="container-fluid text-center">
@@ -22,20 +25,16 @@
   <div class="container">
     <form class="product-form">
       <div class="form-group">
-        <input type="text" class="form-control" id="productIDs" placeholder="Product ID/IDs"/>
+        <input type="text" class="form-control" id="productIDs" placeholder="Product ID/IDs" />
       </div>
       <button type="submit" id="submitButton" class="btn btn-success">Submit</button>
     </form>
   </div>
-  <script>
-    document.getElementById("submitButton").addEventListener('click', function(e){
-      e.preventDefault();
-      const productIDs = document.getElementById("productIDs").value;
-      $.ajax({
-        method: "GET", 
-        url: `https://www.dollskill.com/codetest/api.php?ids=${productIDs}&op=get_size_attributes`
-      }).then(products => console.log(products));
-    });
-  </script>
+
+  <div class="container" id="productsContainer">
+
+  </div>
+
 </body>
+
 </html>
