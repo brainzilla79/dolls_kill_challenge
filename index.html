@@ -26,11 +26,19 @@
     <form class="product-form">
       <div class="form-group">
         <input type="text" class="form-control" id="productIDs" placeholder="Product ID/IDs" />
+        <small class="form-text text-muted">Enter comma seperated product IDs</small>
       </div>
       <button type="submit" id="submitButton" class="btn btn-success">Submit</button>
     </form>
   </div>
 
+  <div class="sort-select-container container hidden" id="sortSelectContainer">
+    <label for="sortSelect">Sort Order</label> 
+    <select class="custom-select" id="sortSelect">
+      <option value="true" selected>Ascending</option>
+      <option value="false">Descending</option>
+    </select>
+  </div>
   <div class="container" id="productsContainer">
 
   </div>
