@@ -51,16 +51,30 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  function renderEmptyProducts() {
+    productsContainer.innerHTML = '';
+    const emptyProductsMsg = document.createElement("p");
+    emptyProductsMsg.classList.add("empty-products-msg");
+    emptyProductsMsg.append("There are no products matching that ID");
+    productsContainer.append(emptyProductsMsg);
+  }
+
   function handleSubmit(e) {
     e.preventDefault();
-    const productIDs = input.value;
+    let productIDs = input.value;
+    const idArray = productIDs.split(",");
+    const filtered = idArray.filter(el => el.length > 0);
+    productIDs = filtered.join(",");
     Object.keys(productStore).forEach(productId => delete productStore[productId]);
     $.ajax({
       method: 'GET',
       url: `https://www.dollskill.com/codetest/api.php?ids=${productIDs}&op=get_size_attributes`
     }).then(
       products => {
-        console.log(products);
+        if (Object.keys(products).length === 0) {
+          renderEmptyProducts();
+          return;
+        }
         Object.keys(products).forEach(productID => {
           let simpleProducts;
           if (products[productID] instanceof Array) {
@@ -80,9 +94,8 @@ document.addEventListener('DOMContentLoaded', () => {
           productStore[productID] = simpleProductsArray;
         });
         renderAllProducts();
-        console.log(productStore);
       },
-      err => console.log(err)
+      err => renderEmptyProducts()
     );
     sortSelectContainer.classList.remove("hidden");
     renderAllProducts();

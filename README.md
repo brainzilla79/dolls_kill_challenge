@@ -110,3 +110,14 @@ input.addEventListener('input', e => {
     e.target.value = e.target.value.replace(/[^0-9,]/g, '');
   });
 ```
+
+If extra commas are added they are filtered out.
+
+```javascript
+#...
+let productIDs = input.value;
+const idArray = productIDs.split(",");
+const filtered = idArray.filter(el => el.length > 0);
+productIDs = filtered.join(",");
+#...
+```
