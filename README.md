@@ -1,6 +1,8 @@
 # Dolls Kill Frontend Coding Challenge
 
-For this challenge I have created a web from that takes in either a single Dolls Kill product ID or a collection of comma seperated IDs and fetches the corresponding product data from the Dolls kill API and displays the sizes and quantities on screen. 
+To use this app, either click this [link](http://www.alexanderhapp.com/dolls_kill_challenge/) or download the repo and open index.html in your browser.
+
+For this challenge I have created a web from that takes in either a single Dolls Kill product ID or a collection of comma seperated IDs and fetches the corresponding product data from the Dolls kill API and displays the sizes and quantities on screen.
 
 This application was written using Javascript, HTML, CSS, jQuery and Bootstrap. 
 
